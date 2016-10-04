@@ -6,7 +6,7 @@
 *      Justin Kelly, Nicolas Ruflin
 *
 *  Last edited:
-*      2016-09-27
+*      2016-08-03
 *
 *  License:
 *      GPL v3 or above
@@ -14,10 +14,10 @@
 *  Website:
 *      http://www.simpleinvoices.org
 *}
-{if $smarty.get.stage == 1 }
-  {if $error == 1}
+  {if $smarty.get.stage == 1 }
+  {if $smarty.error == 1}
   <div class="si_message_error">
-    <h2>{$message}</h2>
+    <h2>{$smarty.message}</h2>
   </div>
   {/if}
   <div class="si_center">
