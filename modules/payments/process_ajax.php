@@ -17,20 +17,10 @@ $sth = $invoice->select_all();
 $q = strtolower($_GET["q"]);
 if (!$q) return;
 
-$invoices = $sth->fetch_all(PDO::FETCH_ASSOC);
-foreach ($invoices as $invoice) {
+while ($invoice = getInvoices($sth)) {
     if (strpos(strtolower($invoice['index_id']), $q) !== false) {
         // @formatter:off
-        $invoice['id']        = htmlsafe($invoice['id']);
-        $invoice['calc_date'] = date('Y-m-d', strtotime($invoice['date']));
-        $invoice['date']      = siLocal::date($invoice['date']);
-
-        // Calculate values
-        $invoice['total'] = Invoice::getInvoiceTotal($invoice['id'], $invoice['domain_id']);
-        $invoice['paid']  = Invoice::calc_invoice_paid($invoice['id'], $invoice['domain_id']);
-        $invoice['owing'] = $invoice['total'] - $invoice['paid'];
-
-        // Format values
+        $invoice['id']    = htmlsafe($invoice['id']);
         $invoice['total'] = htmlsafe(number_format($invoice['total'],2));
         $invoice['paid']  = htmlsafe(number_format($invoice['paid'],2));
         $invoice['owing'] = htmlsafe(number_format($invoice['owing'],2));

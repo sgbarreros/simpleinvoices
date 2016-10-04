@@ -1332,7 +1332,9 @@ $patchlines['patch'] = "update `".TB_PREFIX."invoices` set index_id = id;";
 $patchlines['date' ] = "20090902";
 patchmaker('212', $patchlines, $si_patches);
 
-$max_invoice = Invoice::max();
+$invoiceobj = new Invoice();
+$max_invoice = $invoiceobj->max();
+unset($invoiceobj);
 $patchlines['name' ] = "Update the index table with max invoice id - if required";
 $patchlines['patch'] =
 ($max_invoice > "0" ?
@@ -1822,9 +1824,4 @@ $patchlines['name' ] = "Added Customer/Biller User ID column to user table";
 $patchlines['patch'] = "ALTER TABLE `".TB_PREFIX."user` ADD COLUMN `user_id` INT  DEFAULT 0 NOT NULL AFTER `enabled`;";
 $patchlines['date' ] = "20140103";
 patchmaker('292', $patchlines, $si_patches);
-/*
-$patchlines['name' ] = "Add Foreign key definitions to database table constraints";
-$patchlines['patch'] = "ALTER TABLE `".TB_PREFIX."invoice` ADD CONSTRAINT `FK_biller` FOREIGN KEY ('biller_id') REFERENCES `".TB_PREFIX."biller`(`id`) ON UPDATE CASCADE ON DELETE CASCADE;";
-$patchlines['date' ] = "20160928";
-patchmaker('293', $patchlines, $si_patches);
-*/
+

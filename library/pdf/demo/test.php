@@ -2,7 +2,7 @@
 	//fetch the page to write the pdf
 	$invoice_id = $_GET['invoice'];
 
-	$invoice = Invoice::getInvoice($invoice_id);
+	$invoice = getInvoice($invoice_id);
 	$preference = getPreference($invoice['preference_id']);
 	$biller = Biller::select($invoice['biller_id']);
 	$customer = Customer::get($invoice['customer_id']);
@@ -19,3 +19,4 @@
 	//we should now have the pdf and location
 	//email the pdf
 	//delete the pdf
+?>

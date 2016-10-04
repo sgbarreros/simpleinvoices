@@ -28,7 +28,7 @@ $saved = false;
 $type = $_POST['type'];
 
 if ($_POST['action'] == "insert" ) {
-    if(Invoice::insertInvoice($type)) {
+    if(insertInvoice($type)) {
         $id = lastInsertId();
         $saved = true;
     }
