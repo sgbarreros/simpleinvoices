@@ -7,12 +7,12 @@
 database.adapter                    = pdo_mysql
 database.utf8                       = true
 database.params.host                = localhost
-database.params.username            = root
-database.params.password            = ''
-database.params.dbname              = simple_invoices
+database.params.username            = usaestil_admin
+database.params.password            = MatriX01
+database.params.dbname              = usaestil_inv2
 database.params.port                = 3306
 
-authentication.enabled              = false
+authentication.enabled              = true
 authentication.http                 =
 
 export.spreadsheet                  = xls
