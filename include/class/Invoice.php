@@ -61,7 +61,7 @@ class Invoice {
      * @return integer Unique ID of the new invoice_item record.
      */
     public static function insert_item($invoice_id , $quantity, $product_id, $unit_price, $tax_amount, $gross_total,
-                                       $description, $total   , $attribute , $tax_id) {
+                                       $description, $total   , $attribute , $tax_id,$cost) {
         global $pdoDb;
         $domain_id = domain_id::get();
 
@@ -77,7 +77,8 @@ class Invoice {
                                   'gross_total' => $gross_total,
                                   'description' => trim($description),
                                   'total'       => $total,
-                                  'attribute'   => $attribute));
+                                  'attribute'   => $attribute,
+        							'cost'		=> $cost));
         $id = $pdoDb->request("INSERT", "invoice_items");
         // @formatter:on
 
@@ -98,7 +99,7 @@ class Invoice {
      * @return integer <b>id</b> of new <i>invoice_items</i> record.
      */
     public static function insertInvoiceItem($invoice_id, $quantity, $product_id, $line_number   , $tax_id,
-                                             $description = "", $unit_price = "", $attribute = "") {
+                                             $description = "", $unit_price = "", $attribute = "",$cost = "") {
         global $LANG;
 
         // do taxes
@@ -119,7 +120,7 @@ class Invoice {
         if ($description == $LANG['description']) $description = "";
 
         self::insert_item($invoice_id , $quantity, $product_id       , $unit_price, $tax_amount, $gross_total,
-                          $description, $total   , json_encode($attr), $tax_id);
+                          $description, $total   , json_encode($attr), $tax_id,$cost);
         return id;
     }
 

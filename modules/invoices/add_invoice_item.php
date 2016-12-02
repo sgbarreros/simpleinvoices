@@ -12,7 +12,7 @@
 global $smarty;
 if(isset($_POST['submit'])) {
     Invoice::insertInvoiceItem($_POST['id'], $_POST['quantity1'], $_POST['product1'], $_POST['tax_id'],
-                               trim($_POST['description']), $_POST['unit_price1']);
+                               trim($_POST['description']), $_POST['unit_price1'],$_POST['cost']);
 }
 else {
     $products = Product::select_all();
