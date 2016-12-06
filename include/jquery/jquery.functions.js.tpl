@@ -64,6 +64,7 @@
                     $("#quantity"+row_number).attr("value","1");
                 }
                 $("#unit_price"+row_number).attr("value",data['unit_price']);
+                $("#cost"+row_number).attr("value",data['cost']);
                 $("#tax_id\\["+row_number+"\\]\\[0\\]").val(data['default_tax_id']);
                 if (data['default_tax_id_2']== null)
                 {
@@ -234,6 +235,11 @@
         $("#unit_price"+rowID_new, clonedRow).attr("name", "unit_price"+rowID_new);
         $("#unit_price"+rowID_new, clonedRow).val("");
         $("#unit_price"+rowID_new, clonedRow).removeClass("validate[required]");
+        
+        $("#cost"+rowID_old, clonedRow).attr("id", "cost"+rowID_new);
+        $("#cost"+rowID_new, clonedRow).attr("name", "cost"+rowID_new);
+        $("#cost"+rowID_new, clonedRow).val("");
+        $("#cost"+rowID_new, clonedRow).removeClass("validate[required]");
     
         $("#description"+rowID_old, clonedRow).attr("id", "description"+rowID_new);
         $("#description"+rowID_new, clonedRow).attr("name", "description"+rowID_new);

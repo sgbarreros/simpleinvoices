@@ -143,6 +143,12 @@
                      name="unit_price{$smarty.section.line.index|htmlsafe}" size="7"
                      value="{if $smarty.get.unit_price.$lineNumber}{$smarty.get.unit_price.$lineNumber}{/if}" />
             </td>  
+              <td>
+              <input class="si_right {if $smarty.section.line.index == "0"}validate[required]{/if}"
+                     id="cost{$smarty.section.line.index|htmlsafe}" 
+                     name="cost{$smarty.section.line.index|htmlsafe}" size="7"
+                     value="{if $smarty.get.cost.$lineNumber}{$smarty.get.cost.$lineNumber}{/if}" />
+            </td> 
           </tr>
           <tr class="details si_hide">
             <td></td>

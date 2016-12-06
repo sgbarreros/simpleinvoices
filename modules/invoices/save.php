@@ -83,11 +83,14 @@ if ($_POST['action'] == "insert" ) {
                 $price   = (isset($_POST["unit_price$i"] ) ? $_POST["unit_price$i"]  : "");
                 $attr    = (isset($_POST["attribute$i"]  ) ? $_POST["attribute$i"]   : "");
                 $tax_id  = (isset($_POST["tax_id"][$i]   ) ? $_POST["tax_id"][$i]    : "");
-
+                $cost  = (isset($_POST["cost"][$i]  ) ? $_POST["cost"][$i]    : "");
+				print $cost;
                 if ($item == "") {
-                    Invoice::insertInvoiceItem($id  , $qty, $product, $i, $tax_id, $desc, $price, $attr);
+                    Invoice::insertInvoiceItem($id  , $qty, $product, $i, $tax_id, $desc, $price, $attr,$cost);
                 } else {
-                    Invoice::updateInvoiceItem($item, $qty, $product, $i, $tax_id, $desc, $price, $attr);
+                	//Invoice update call to simpleinvoices/include/class/Invoice.php
+                    Invoice::updateInvoiceItem($item, $qty, $product, $i, $tax_id, $desc, $price, $attr,$cost);
+                    error_log("modules/invoices/save.php price= ". $price);
                 }
                 // @formatter:on
             }

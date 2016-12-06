@@ -982,9 +982,10 @@ function patch126() {
 
         $sql = "UPDATE  " . TB_PREFIX . "invoice_items
                 SET product_id = :id,
-                    unit_price = :price
+                    unit_price = :price,
+        			cost= :cost
                 WHERE " . TB_PREFIX . "invoice_items.id = :item";
-        dbQuery($sql, ':id', $id[0], ':price', $res['gross_total'], ':item', $res['id']);
+        dbQuery($sql, ':id', $id[0], ':price',':cost', $res['gross_total'], ':item', $res['id']);
         // @formatter:on
     }
 }

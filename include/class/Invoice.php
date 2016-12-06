@@ -99,7 +99,7 @@ class Invoice {
      * @return integer <b>id</b> of new <i>invoice_items</i> record.
      */
     public static function insertInvoiceItem($invoice_id, $quantity, $product_id, $line_number   , $tax_id,
-                                             $description = "", $unit_price = "", $attribute = "",$cost = "") {
+                                             $description = "", $unit_price = "", $attribute = "",$cost) {
         global $LANG;
 
         // do taxes
@@ -161,8 +161,9 @@ class Invoice {
         $result = $pdoDb->request("UPDATE", "invoices");
         return $result;
     }
-
+ 
     /**
+     * SGB 12.05.16 This function is used to update teh invoice items from the details view.
      * Update invoice_items table for a specific entry.
      * @param int $id Unique id for the record to be updated.
      * @param int $quantity Number of items
@@ -175,7 +176,7 @@ class Invoice {
      * @return boolean true always returned.
      */
     public static function updateInvoiceItem($id    , $quantity   , $product_id, $line_number,
-                                             $tax_id, $description, $unit_price, $attribute) {
+                                             $tax_id, $description, $unit_price, $attribute,$cost) {
         global $LANG, $pdoDb;
 
         $attr = array();
@@ -202,7 +203,9 @@ class Invoice {
                                   'gross_total' => $gross_total,
                                   'description' => $description,
                                   'total'       => $total,
+        						  'cost'		=> $cost,
                                   'attribute'   => json_encode($attr)));
+        						  
         $pdoDb->request("UPDATE", "invoice_items");
         // @formatter:on
 
