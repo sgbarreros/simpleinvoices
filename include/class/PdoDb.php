@@ -1043,6 +1043,8 @@ class PdoDb {
                 (empty($order  ) ? "" : " " . $order   . "\n") .
                 (empty($limit  ) ? "" : " " . $limit);
         // @formatter:on
+        //SGB 12/07/16 sql callings for all queries. 
+        error_log("SQL= ". $sql);
         return $this->query($sql, $this->keyPairs);
     }
 
