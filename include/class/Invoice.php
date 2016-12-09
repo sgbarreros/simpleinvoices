@@ -203,8 +203,8 @@ class Invoice {
                                   'gross_total' => $gross_total,
                                   'description' => $description,
                                   'total'       => $total,
-        						  'cost'		=> $cost,
-                                  'attribute'   => json_encode($attr)));
+                                  'attribute'   => json_encode($attr),
+        						   'cost'		=> $cost));
         						  
         $pdoDb->request("UPDATE", "invoice_items");
         // @formatter:on
@@ -765,7 +765,8 @@ class Invoice {
                               $v['total'],
                               $v['attribute'],
                               $v['tax'],
-                              $v['unit_price']);
+                              $v['unit_price'],
+        					  $v['cost']);
         }
         // @formatter:on
 

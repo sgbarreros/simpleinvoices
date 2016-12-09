@@ -220,6 +220,11 @@
         clonedRow.find("#quantity"+rowID_new).removeAttr("value");
         clonedRow.find("#quantity"+rowID_new).removeClass("validate[required]");
     
+        $("#cost"+rowID_old, clonedRow).attr("id", "cost"+rowID_new);
+        $("#cost"+rowID_new, clonedRow).attr("name", "cost"+rowID_new);
+        clonedRow.find("#cost"+rowID_new).removeAttr("value");
+        clonedRow.find("#cost"+rowID_new).removeClass("validate[required]");
+        
         //clonedRow.find("#products"+rowID_old).removeAttr("onchange");
         clonedRow.find("#products"+rowID_old).attr("rel", rowID_new);
         clonedRow.find("#products"+rowID_old).attr("id", "products"+rowID_new);
