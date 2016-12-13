@@ -1044,7 +1044,7 @@ class PdoDb {
                 (empty($limit  ) ? "" : " " . $limit);
         // @formatter:on
         //SGB 12/07/16 sql callings for all queries. 
-        error_log("SQL= ". $sql);
+        //error_log(" This is my SQL from PdoDB.php= ". $sql);
         return $this->query($sql, $this->keyPairs);
     }
 

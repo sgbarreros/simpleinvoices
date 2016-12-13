@@ -45,7 +45,7 @@ if ($_POST['action'] == "insert" ) {
                 $tax_id = (empty($_POST["tax_id"][$i] ) ? "" : $_POST["tax_id"][$i]);
                 $attr = (empty($_POST["attribute"][$i]) ? "" : $_POST["attribute"][$i]);
                 Invoice::insertInvoiceItem($id    , $_POST["quantity$i"]   , $_POST["products$i"]  , $i,
-                                           $tax_id, $_POST["description$i"], $_POST["unit_price$i"], $attr);
+                                           $tax_id, $_POST["description$i"], $_POST["unit_price$i"], $attr,$_POST["cost$i"]);
                 // @formatter:on
             }
             $i++;
@@ -83,14 +83,13 @@ if ($_POST['action'] == "insert" ) {
                 $price   = (isset($_POST["unit_price$i"] ) ? $_POST["unit_price$i"]  : "");
                 $attr    = (isset($_POST["attribute$i"]  ) ? $_POST["attribute$i"]   : "");
                 $tax_id  = (isset($_POST["tax_id"][$i]   ) ? $_POST["tax_id"][$i]    : "");
-                $cost  = (isset($_POST["cost"][$i]  ) ? $_POST["cost"][$i]    : "");
-				print $cost;
+                $cost   = (isset($_POST["cost$i"] ) ? $_POST["cost$i"]  : "");
                 if ($item == "") {
                     Invoice::insertInvoiceItem($id  , $qty, $product, $i, $tax_id, $desc, $price, $attr,$cost);
                 } else {
                 	//Invoice update call to simpleinvoices/include/class/Invoice.php
                     Invoice::updateInvoiceItem($item, $qty, $product, $i, $tax_id, $desc, $price, $attr,$cost);
-                    error_log("modules/invoices/save.php price= ". $price);
+                    error_log("modules/invoices/save.php price= ". $cost);
                 }
                 // @formatter:on
             }

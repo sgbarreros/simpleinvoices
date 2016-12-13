@@ -99,9 +99,12 @@
         <td>
           <input type="text" name="unit_price0"
                  value="{$invoiceItems.0.unit_price|siLocal_number_formatted}" size="10" />
+                   <input type="text" name="cost0"
+                 value="{$invoiceItems.0.cost|siLocal_number_formatted}" size="10" />
           <input type="hidden" name="quantity0" value="1" />
           <input type="hidden" name="id0" value="{$invoiceItems.0.id|htmlsafe}" />
           <input type="hidden" name="products0" value="{$invoiceItems.0.product_id|htmlsafe}" />
+          
         </td>
       </tr>
       <tr>
